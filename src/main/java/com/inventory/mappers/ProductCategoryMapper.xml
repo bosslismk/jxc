@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inventory.dao.ProductCategoryDAO">
+
+	<resultMap type="ProductCategory" id="ProductCategoryResult">
+		<id property="categoryId" column="categoryId"/>
+		<result property="name" column="name"/>
+		<result property="createTime" column="createTime"/>
+		<result property="updateTime" column="updateTime"/>
+	</resultMap>
+	<select id="findById" resultMap="ProductCategoryResult">
+		select * from in_product_category where categoryId=#{categoryId}
+	</select>
+	<select id="findAll" resultMap="ProductCategoryResult">
+		select * from in_product_category 
+		where 1=1
+		<if test="name != null and name !=''">
+			and name like #{name}
+		</if>
+		order by createTime desc
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	<select id="countAll" resultType="Long">
+		select count(1) from in_product_category 
+		where 1=1
+		<if test="name != null and name !=''">
+			and name like #{name}
+		</if>
+	</select>
+	<insert id="save">
+		insert into in_product_category values
+		(null,#{name},now(),now())
+	</insert>
+	<update id="update">
+		update in_product_category 
+		<set>
+			<if test="name !=null and name !=''">
+				name = #{name},
+			</if>
+		</set>
+		where categoryId=#{categoryId}
+	</update>
+	<delete id="delete">
+		delete from in_product_category where categoryId in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+	</delete>
+</mapper> 

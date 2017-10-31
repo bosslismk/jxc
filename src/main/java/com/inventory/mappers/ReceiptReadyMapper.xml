@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.inventory.dao.ReceiptReadyDAO" >
+  <resultMap id="ReceiptReadyResult" type="ReceiptReady" >
+    <id column="receiptReadyNo" property="receiptreadyno" jdbcType="INTEGER" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="receiptPerson" property="receiptperson" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="operater" property="operater" jdbcType="VARCHAR" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <association column="receiptNo" property="receipt" select="com.inventory.dao.ReceiptDAO.findById"/>
+  </resultMap>
+  <select id="findById" resultMap="ReceiptReadyResult" parameterType="java.lang.Integer" >
+    select * from in_receipt_ready
+    where receiptReadyNo = #{receiptreadyno,jdbcType=INTEGER}
+  </select>
+  <select id="findByReceiptNo" resultMap="ReceiptReadyResult"  >
+    select * from in_receipt_ready
+    where receiptNo = #{receiptno}
+  </select>
+  <delete id="delete">
+		delete from in_receipt_ready where receiptReadyNo  in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+  </delete>
+   <delete id="deleteByReceiptNo">
+		delete from in_receipt_ready where receiptNo  in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+  </delete>
+  <insert id="save" parameterType="com.inventory.entity.ReceiptReady" >
+    insert into in_receipt_ready (receiptReadyNo, amount, receiptPerson, 
+      type, operater, remarks, 
+      receiptNo)
+    values (null, #{amount,jdbcType=DECIMAL}, #{receiptperson,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{operater,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{receiptno,jdbcType=VARCHAR})
+  </insert>
+  <update id="update" parameterType="com.inventory.entity.ReceiptReady" >
+    update in_receipt_ready
+    <set >
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="receiptperson != null" >
+        receiptPerson = #{receiptperson,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="operater != null" >
+        operater = #{operater,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="receiptno != null" >
+        receiptNo = #{receiptno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where receiptReadyNo = #{receiptreadyno,jdbcType=INTEGER}
+  </update>
+</mapper>

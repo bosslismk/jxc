@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inventory.dao.StoreDAO">
+
+	<resultMap id="StoreResult" type="Store" >
+    <id column="storeId" property="storeId"  />
+    <result column="name" property="name"  />
+    <result column="address" property="address"  />
+    <result column="contactman" property="contactman"  />
+    <result column="tel" property="tel" />
+    <result column="email" property="email"  />
+    <result column="createTime" property="createTime"  />
+    <result column="updateTime" property="updateTime"  />
+  </resultMap>
+	<select id="findById" resultMap="StoreResult">
+		select * from in_store where storeId=#{storeId}
+	</select>
+	<select id="findAll" resultMap="StoreResult">
+		select * from in_store 
+		where 1=1
+		<if test="searchWord != null and searchWord !=''">
+			and ( name like #{searchWord} or contactman like #{searchWord} or address like #{searchWord})
+		</if>
+		order by createTime desc
+		<if test="start!=null and size!=null">
+			limit #{start},#{size}
+		</if>
+	</select>
+	<select id="countAll" resultType="Long">
+		select count(1) from in_store 
+		where 1=1
+		<if test="searchWord != null and searchWord !=''">
+			and ( name like #{searchWord} or contactman like #{searchWord} or address like #{searchWord})
+		</if>
+	</select>
+	<insert id="save">
+		insert into in_store  
+    values (null, #{name}, #{address}, 
+      #{contactman}, #{tel}, #{email},  now(), now()
+      )
+	</insert>
+	<update id="update">
+		update in_store 
+		<set>
+		<if test="name != null" >
+        name = #{name},
+      </if>
+      <if test="address != null" >
+        address = #{address},
+      </if>
+      <if test="contactman != null" >
+       contactman = #{contactman},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel},
+      </if>
+      <if test="email != null" >
+        email = #{email},
+      </if>
+    </set>
+    	where storeId = #{storeId}
+	</update>
+	<delete id="delete">
+		delete from in_store where storeId in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+	</delete>
+</mapper> 

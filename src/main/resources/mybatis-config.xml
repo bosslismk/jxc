@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 别名 -->
+	<typeAliases>
+		<typeAlias type="com.inventory.entity.Department" alias="Department"/>
+		<typeAlias type="com.inventory.entity.Employee" alias="Employee"/>
+		<typeAlias type="com.inventory.entity.ProductCategory" alias="ProductCategory"/>
+		<typeAlias type="com.inventory.entity.Product" alias="Product"/>
+		<typeAlias type="com.inventory.entity.Store" alias="Store"/>
+		<typeAlias type="com.inventory.entity.Customer" alias="Customer"/>
+		<typeAlias type="com.inventory.entity.ProductStoreLink" alias="ProductStoreLink"/>
+		<typeAlias type="com.inventory.entity.Order" alias="Order"/>
+		<typeAlias type="com.inventory.entity.OrderItem" alias="OrderItem"/>
+		<typeAlias type="com.inventory.entity.OutStore" alias="OutStore"/>
+		<typeAlias type="com.inventory.entity.OutStoreItem" alias="OutStoreItem"/>
+		<typeAlias type="com.inventory.entity.Receipt" alias="Receipt"/>
+		<typeAlias type="com.inventory.entity.ReceiptReady" alias="ReceiptReady"/>
+	</typeAliases>
+</configuration>

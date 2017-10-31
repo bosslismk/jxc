@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.inventory.dao.OutStoreItemDAO">
+  <resultMap id="OutStoreItemResult" type="OutStoreItem">
+    <id column="outStoreItemId" jdbcType="INTEGER" property="outstoreitemid" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="outStoreNo" jdbcType="VARCHAR" property="outstoreno" />
+    <association column="productId" property="product" select="com.inventory.dao.ProductDAO.findById" />
+    <association column="storeId" property="store" select="com.inventory.dao.StoreDAO.findById" />
+    <association column="outStoreNo" property="outstore" select="com.inventory.dao.OutStoreDAO.findById"/>
+  </resultMap>
+  <select id="findById" parameterType="java.lang.Integer" resultMap="OutStoreItemResult">
+    select 
+   *
+    from in_out_store_item
+    where outStoreItemId = #{outstoreitemid,jdbcType=INTEGER}
+  </select>
+  <select id="findByOutStoreNo"   resultMap="OutStoreItemResult">
+    select 
+   *
+    from in_out_store_item
+    where outStoreNo = #{outStoreNo}
+  </select>
+<delete id="delete"  >
+    delete from in_out_store_item where orderItemId in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+  </delete>
+  <delete id="deleteByOutStoreNo"  >
+    delete from in_out_store_item where outStoreNo in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+  </delete>
+  <insert id="save" >
+    insert into in_out_store_item (outStoreItemId, productId, 
+      storeId, num, outStoreNo
+      )
+    values (null, #{productid,jdbcType=INTEGER},  
+      #{storeid,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{outstoreno,jdbcType=VARCHAR}
+      )
+  </insert>
+   
+  <update id="update" >
+    update in_out_store_item
+    <set>
+      <if test="productid != null">
+        productId = #{productid,jdbcType=INTEGER},
+      </if>
+      <if test="storeid != null">
+        storeId = #{storeid,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="outstoreno != null">
+        outStoreNo = #{outstoreno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where outStoreItemId = #{outstoreitemid,jdbcType=INTEGER}
+  </update>
+</mapper>

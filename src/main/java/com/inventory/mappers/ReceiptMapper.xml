@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.inventory.dao.ReceiptDAO" >
+  <resultMap id="ReceiptResult" type="Receipt" >
+    <id column="receiptNo" property="receiptno" jdbcType="VARCHAR" />
+    <result column="receiptMaxDate" property="receiptmaxdate" jdbcType="TIMESTAMP" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="readyAmount" property="readyamount" jdbcType="DECIMAL" />
+    <result column="operater" property="operater" jdbcType="VARCHAR" />
+    <result column="reviewer" property="reviewer" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="receiptType" property="receipttype" jdbcType="INTEGER" />
+    <result column="remarks" property="remarks" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  	<association column="customerId" property="customer" select="com.inventory.dao.CustomerDAO.findById"/>
+  </resultMap>
+  <select id="findAll" resultMap="ReceiptResult">
+   select * from in_receipt
+   where 1=1
+   <if test="receiptNo !=null and receiptNo !=''">
+   	receiptNo like #{receiptno}
+   </if>
+    order by receiptNo desc
+	<if test="start!=null and size!=null">
+		limit #{start},#{size}
+	</if>
+  </select>
+  <select id="countAll" resultType="Long">
+   select count(1) from in_receipt
+   where 1=1
+   <if test="receiptNo !=null and receiptNo !=''">
+   	receiptNo like #{receiptno}
+   </if>
+  </select>
+  <select id="findById" resultMap="ReceiptResult" parameterType="java.lang.String" >
+    select * from in_receipt
+    where receiptNo = #{receiptno,jdbcType=VARCHAR}
+  </select>
+  <delete id="delete">
+		delete from in_receipt where receiptNo in
+		<foreach item="idItem" collection="array" open="(" separator="," close=")">
+			#{idItem}
+		</foreach>
+  </delete>
+  <insert id="save" parameterType="Receipt" >
+    insert into in_receipt (receiptNo, receiptMaxDate, customerId, 
+      amount, readyAmount, operater, 
+      reviewer, status, receiptType, 
+      remarks, createTime, updateTime
+      )
+    values (#{receiptno,jdbcType=VARCHAR}, #{receiptmaxdate,jdbcType=TIMESTAMP}, #{customerid,jdbcType=INTEGER}, 
+      #{amount,jdbcType=DECIMAL}, #{readyamount,jdbcType=DECIMAL}, #{operater,jdbcType=VARCHAR}, 
+      #{reviewer,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{receipttype,jdbcType=INTEGER}, 
+      #{remarks,jdbcType=VARCHAR}, now(), now()
+      )
+  </insert>
+  
+  <update id="update" parameterType="Receipt" >
+    update in_receipt
+    <set >
+      <if test="receiptmaxdate != null" >
+        receiptMaxDate = #{receiptmaxdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="customerid != null" >
+        customerId = #{customerid,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="readyamount != null" >
+        readyAmount = #{readyamount,jdbcType=DECIMAL},
+      </if>
+      <if test="operater != null" >
+        operater = #{operater,jdbcType=VARCHAR},
+      </if>
+      <if test="reviewer != null" >
+        reviewer = #{reviewer,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="receipttype != null" >
+        receiptType = #{receipttype,jdbcType=INTEGER},
+      </if>
+      <if test="remarks != null" >
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where receiptNo = #{receiptno,jdbcType=VARCHAR}
+  </update>
+</mapper>
