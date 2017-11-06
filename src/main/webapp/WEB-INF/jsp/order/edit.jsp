@@ -29,7 +29,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-xs-4">
-						<label for="name">客户搜索</label>
+						<label>客户搜索</label>
 						<div class="input-group">
 							<input type="text" name="customersearch" id="customersearch"
 								class="form-control" /> <span class="input-group-btn">
@@ -40,7 +40,7 @@
 						</div>
 					</div>
 					<div class="col-xs-8">
-						<label for="name">选择客户</label>
+						<label>选择客户</label>
 						<div class="form-group">
 							<select id="customerid" name="customerid" required="required"
 								class="form-control">
@@ -50,7 +50,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">销售员编号</label>
+						<label>销售员编号</label>
 						<div class="form-group">
 							<input type="text" name="saleperson" id="saleperson" required="required"  
 								class="form-control" />  
@@ -59,7 +59,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12"> 
-						<label for="name">销售日期</label>
+						<label>销售日期</label>
 						<div class="form-group">
 							<input type="text" name="saledate" id="saledate" required="required"  
 								class="form-control" />  
@@ -68,7 +68,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12"> 
-						<label for="name">支付方式</label>
+						<label>支付方式</label>
 						<div class="form-group">
 							<select name="paytype" id="paytype" class="form-control" >
 								<option value="1"  >现金支付</option>
@@ -81,7 +81,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">送货地址</label>
+						<label>送货地址</label>
 						<div class="form-group">
 							<textarea style="min-height: 100px" maxlength="250" name="address" class="form-control"></textarea>
 						</div>
@@ -89,7 +89,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">订单备注</label>
+						<label>订单备注</label>
 						<div class="form-group">
 							<textarea style="min-height: 100px" maxlength="250" name="remarks" class="form-control"></textarea>
 						</div>

@@ -29,7 +29,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">出库类型</label>
+						<label>出库类型</label>
 						<div class="form-group">
 							<select name="type" id="type" class="form-control" required="required">
 								<option value="1">销售订单出库</option>
@@ -40,14 +40,14 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-8">
-						<label for="name">订单单号</label>
+						<label>订单单号</label>
 						<div class="form-group">
 							<input type="text" name="orderno" id="orderno" required="required"  
 								class="form-control" />  
 						</div>
 					</div>
 					<div class="col-xs-4">
-						<label for="name">查询</label>
+						<label>查询</label>
 						<div class="form-group">
 								<button type="button"  id="searchOrderItems" class="btn btn-success">查询</button> 
 						</div>
@@ -55,7 +55,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">发货人编号</label>
+						<label>发货人编号</label>
 						<div class="form-group">
 							<input type="text" name="deliverperson" id="deliverperson" required="required"  
 								class="form-control" />  

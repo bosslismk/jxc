@@ -28,15 +28,15 @@
                   <input type="text" value="${department.name }" name="name" maxlength="20" class="form-control" id="exampleInputEmail1" placeholder="请输入部门名称" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">部门经理*</label>
+                  <label>部门经理*</label>
                   <input type="text" class="form-control" value="${department.manager }" maxlength="20" name="manager" id="manager" placeholder="请输入部门经理员工号" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">部门联系方式*</label>
+                  <label>部门联系方式*</label>
                   <input type="text" class="form-control" value="${department.tel }" id="tel" placeholder="请输入联系方式" maxlength="20" name="tel" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">部门简介</label>
+                  <label>部门简介</label>
                   <textarea style="min-height: 200px" class="form-control" name="remarks" maxlength="200" placeholder="请输入200字内的简介">${department.remarks }</textarea>
                 </div>
               </div>

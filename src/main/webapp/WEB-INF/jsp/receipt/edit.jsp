@@ -4,7 +4,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="${pageContext.request.contextPath}/plugins/select2/select2.full.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/plugins/select2/select2.min.css">
- <section  class="content-header">
+ <section  class="content-header"/>
  <h1>
        <h1>
         资金管理
@@ -15,7 +15,7 @@
         <li><a href="#">收款单信息管理</a></li>
         <li><a href="#">收款单编辑</a></li>
       </ol>
-    </section>
+
 
 <section class="content">
 
@@ -30,7 +30,7 @@
 			<div class="box-body">
 				<div class="row">
 					<div class="col-xs-4">
-						<label for="name">客户搜索</label>
+						<label>客户搜索</label>
 						<div class="input-group">
 							<input type="text" name="customersearch" id="customersearch"
 								class="form-control" /> <span class="input-group-btn">
@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<div class="col-xs-8">
-						<label for="name">选择客户</label>
+						<label>选择客户</label>
 						<div class="form-group">
 							<select id="customerid" name="customerid" required="required"
 								class="form-control">
@@ -51,7 +51,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">收款类型</label>
+						<label>收款类型</label>
 						<div class="form-group">
 						<select name="receipttype" id="receipttype" class="form-control">
 							<option value="1">销售订单收款</option>
@@ -62,7 +62,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12"> 
-						<label for="name">最大收款期限日</label>
+						<label>最大收款期限日</label>
 						<div class="form-group">
 							<input type="text" name="receiptmaxdate" id="receiptmaxdate" required="required"  
 								class="form-control" />  
@@ -71,7 +71,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12"> 
-						<label for="name">总金额</label>
+						<label>总金额</label>
 						<div class="form-group">
 							<input type="text" name="amount" id="amount" required="required"  
 								class="form-control" />  
@@ -80,7 +80,7 @@
 				</div>
 				<div class="row">
 					<div class="col-xs-12">
-						<label for="name">备注</label>
+						<label>备注</label>
 						<div class="form-group">
 							<textarea style="min-height: 100px" maxlength="250" name="remarks" class="form-control"></textarea>
 						</div>

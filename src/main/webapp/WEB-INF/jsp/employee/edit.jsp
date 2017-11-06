@@ -53,25 +53,25 @@
                   <input type="text" value="${employee.name }" name="name" maxlength="20" class="form-control" id="exampleInputEmail1" placeholder="请输入员工姓名" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">性别*</label>
+                  <label>性别*</label>
                   <select class="form-control" name="sex">
                     <option value="男" ${employee.sex=='男'?'selected':'' }>男</option>
                     <option value="女" ${employee.sex=='女'?'selected':'' }>女</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">联系方式*</label>
+                  <label>联系方式*</label>
                   <input type="text" class="form-control" value="${employee.tel }" id="tel" placeholder="请输入联系方式" maxlength="20" name="tel" required="required">
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">角色*</label>
+                  <label>角色*</label>
                   <select class="form-control" name="role">
                     <option value="0" ${employee.role==0?'selected':'' }>普通员工</option>
                     <option value="1" ${employee.role==1?'selected':'' }>管理员</option>
                   </select>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputPassword1">部门*</label>
+                  <label>部门*</label>
                   <select class="form-control" name="departmentId">
                   <c:forEach items="${departments }" var="department">
                     <option value="${department.departmentId }" ${employee.department.departmentId==department.departmentId?'selected':'' }>${department.name }</option>

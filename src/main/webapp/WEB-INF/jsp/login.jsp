@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Java80进销存管理系统-登录</title>
+  <title>Java进销存管理系统-登录</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -37,11 +37,11 @@
 
     <form action="${pageContext.request.contextPath}/login.htm" method="post">
       <div class="form-group has-feedback">
-        <input type="text" name="empNo" value="E10000" class="form-control" placeholder="工号">
+        <input type="text" name="empNo" value="" class="form-control" placeholder="工号">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" name="password" value="123456" class="form-control" placeholder="密码">
+        <input type="password" name="password" value="" class="form-control" placeholder="密码">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">

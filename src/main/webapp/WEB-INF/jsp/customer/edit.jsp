@@ -62,7 +62,7 @@
 							<input type="text" value="${customer.website }" name="website" maxlength="100" class="form-control" id="website"   >
 						</div>
 						<div class="form-group">
-							<label for="category">客户状态*</label> 
+							<label>客户状态*</label>
 							<select id="status" class="form-control" name="status">
 								<option value="1" ${customer.status==1?'selected':'' }>正常使用</option>
 								<option value="2" ${customer.status==2?'selected':'' }>暂停使用</option>
@@ -75,7 +75,6 @@
 						<div class="form-group">
 							<label for="name">备注</label> 
 							<textarea style="min-height: 200px;" name="remarks" id="remarks" class="form-control" maxlength="200">${customer.remarks }</textarea>
-						</div>
 						</div>
 					</div>
 					

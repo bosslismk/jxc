@@ -5,7 +5,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Java80进销存管理系统</title>
+<title>Java进销存管理系统</title>
 <!-- Tell the browser to be responsive to screen width -->
 <jsp:include page="${pageContext.request.contextPath}/Staticreference/include-css.htm"></jsp:include>
 
@@ -30,7 +30,7 @@
 			<!-- Content Header (Page header) -->
 			<!-- /.content -->
 			<jsp:include page="${requestScope.page}.htm"></jsp:include>
-			${requestScope.page}
+
 		</div>
 		<!-- /.content-wrapper -->
 		<jsp:include page="${pageContext.request.contextPath}/Sreticeference/footer.htm"></jsp:include>
