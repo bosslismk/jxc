@@ -8,11 +8,11 @@ import java.util.List;
  *
  */
 public class Product {
-    private Integer productid;
+    private Integer productid;//商品ID
 
-    private String name;
+    private String name;//商品名称
 
-    private Integer categoryid;
+    private Integer categoryid;//商品分类ID
 
     private String model;//型号
 
@@ -28,9 +28,9 @@ public class Product {
 
     private Integer maxstocks;//最大库存
 
-    private Date createtime;
+    private Date createtime;//创建时间
 
-    private Date updatetime;
+    private Date updatetime;//最后更新时间
     
     private List<Store> stores;
     

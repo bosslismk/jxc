@@ -15,7 +15,7 @@ public class ReceiptReady {
 
     private String operater;//操作员
 
-    private String remarks;
+    private String remarks;//评论
 
     private String receiptno;//收款单号
     

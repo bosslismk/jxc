@@ -6,7 +6,7 @@ import java.util.Date;
  *
  */
 public class Customer {
-    private Integer customerid;
+    private Integer customerid;//客户ID
 
     private String name;//客户名称
 
@@ -28,13 +28,13 @@ public class Customer {
 
     private String email;//邮箱
 
-    private String remarks;
+    private String remarks;//备注
 
     private Integer status;//状态1正常使用2暂停
 
-    private Date createtime;
+    private Date createtime;//创建时间
 
-    private Date updatetime;
+    private Date updatetime;//最后更新时间
 
     public Integer getCustomerid() {
         return customerid;

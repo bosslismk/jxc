@@ -6,13 +6,13 @@ import java.util.Date;
  * 部门实体类
  */
 public class Department {
-	private Integer departmentId;
-	private String name;
+	private Integer departmentId;//部门ID
+	private String name;//部门名称
 	private String manager;//部门经理的工号
-	private Date createTime;
-	private Date updateTime;
+	private Date createTime;//创建时间
+	private Date updateTime;//最后更新时间
 	private String tel;//部门联系方式
-	private String remarks;
+	private String remarks;//备注
 	public Integer getDepartmentId() {
 		return departmentId;
 	}

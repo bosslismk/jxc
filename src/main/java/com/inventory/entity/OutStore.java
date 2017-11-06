@@ -6,7 +6,7 @@ import java.util.Date;
  *
  */
 public class OutStore {
-    private String outno;
+    private String outno;//出库单号
 
     private String orderno;//订单出库则需要此字段存放订单单号
 
@@ -20,9 +20,9 @@ public class OutStore {
 
     private Integer status;//状态 -1 审核失败 0已取消1待审核 2 审核通过待出库 3出库完成
 
-    private Date createtime;
+    private Date createtime;//创建时间
 
-    private Date updatetime;
+    private Date updatetime;//最后更新时间
 
     public String getOutno() {
         return outno;

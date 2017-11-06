@@ -7,14 +7,14 @@ import java.util.Date;
  */
 public class Employee {
 	private String empNo;//员工编号
-	private String name;
-	private String sex;
+	private String name;//员工姓名
+	private String sex;//性别
 	private String tel;//联系方式
-	private String password;
+	private String password;//员工密码
 	private Department department;//部门
-	private Integer role;
-	private Date createTime;
-	private Date updateTime;
+	private Integer role;//角色
+	private Date createTime;//创建时间
+	private Date updateTime;//最后更新时间
 	public Integer getRole() {
 		return role;
 	}

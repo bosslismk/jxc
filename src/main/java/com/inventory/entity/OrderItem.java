@@ -12,7 +12,7 @@ public class OrderItem {
 
     private BigDecimal price;
 
-    private String orderno;
+    private String orderno;//订单编号
 
     private Integer num;
     

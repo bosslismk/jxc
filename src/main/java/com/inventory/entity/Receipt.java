@@ -27,11 +27,11 @@ public class Receipt {
 
     private Integer receipttype;//收款类型1出售订单收款2采购退货收款
 
-    private String remarks;
+    private String remarks;//评论
 
-    private Date createtime;
+    private Date createtime;//创建时间
 
-    private Date updatetime;
+    private Date updatetime;//更新时间
 
     public Customer getCustomer() {
 		return customer;
