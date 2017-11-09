@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="jxc:war exploded">
-    <output-path>$PROJECT_DIR$/target/jsc</output-path>
+    <output-path>$PROJECT_DIR$/target/jxc</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -36,10 +36,12 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-web:4.0.6.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-webmvc:4.0.6.RELEASE" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.4" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.4" />
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/target/jsc/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/target/jxc/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="jxc/web/Web" />
     </root>

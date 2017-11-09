@@ -5,27 +5,32 @@
     xmlns:aop="http://www.springframework.org/schema/aop"   
     xmlns:context="http://www.springframework.org/schema/context"  
     xmlns:jee="http://www.springframework.org/schema/jee"  
-    xmlns:tx="http://www.springframework.org/schema/tx"  
- 
+    xmlns:tx="http://www.springframework.org/schema/tx"
+
     xsi:schemaLocation="    
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+
    ">
-	<context:annotation-config></context:annotation-config>
+	<context:annotation-config/>
+	<bean class="com.inventory.util.ConvertPwdPropertyConfigurer"
+		  p:location="classpath:config/jdbc.properties"
+	/>
 	<!-- 数据源 -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
-		<property name="url" value="jdbc:mysql://localhost:3306/inventory?useUnicode=true&amp;characterEncoding=UTF-8"/>
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/jxc?useUnicode=true&amp;characterEncoding=UTF-8"/>
 		<property name="username" value="root"/>
-		<property name="password" value="wuhuibuai321."/> 
-		<property name="driverClassName" value="com.mysql.jdbc.Driver"/> 
-		<!-- 配置初始化大小、最小、最大 -->  
-	    <property name="initialSize" value="5" />  
-	    <property name="minIdle" value="5" />   
-	    <property name="maxActive" value="20" />
+		<property name="password" value="wuhuibuai321."/>
+
+		<!-- 配置初始化大小、最小、最大 -->
+	    <property name="initialSize" value="5"/>
+	    <property name="minIdle" value="5"/>
+	    <property name="maxActive" value="20"/>
 	</bean>
 
 	<!-- sqlSessionFactory -->
