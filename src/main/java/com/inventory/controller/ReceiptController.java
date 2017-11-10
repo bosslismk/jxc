@@ -26,6 +26,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 收款
+ */
 @Controller
 public class ReceiptController {
 	@Resource
@@ -36,12 +39,23 @@ public class ReceiptController {
 	private ReceiptDAO receiptDao;
 	@Resource
 	private ReceiptReadyDAO receiptReadyDao;
-	
+
+	/**
+	 * 收款首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/receipt/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/receipt/list");
 		return "jsp/main";
 	}
+
+	/**
+	 * 收款搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/receipt/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -72,6 +86,12 @@ public class ReceiptController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 取消收款单
+	 * @param request
+	 * @param response
+	 */
 	@Transactional
 	@RequestMapping("/receipt/cancel")
 	public void cancel(HttpServletRequest request,HttpServletResponse response){
@@ -98,6 +118,13 @@ public class ReceiptController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 收款审核通过/收款审核失败
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/receipt/review")
 	public void review(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("ids");
@@ -188,6 +215,12 @@ public class ReceiptController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 收款新增页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/receipt/edit")
 	public String edit(HttpServletRequest request){
 		request.setAttribute("page","/Sreticeference/receipt/edit");
@@ -212,6 +245,13 @@ public class ReceiptController {
 		request.setAttribute("page","/Sreticeference/receipt/descr");
 		return "jsp/main";
 	}
+
+	/**
+	 * 收款新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@Transactional
 	@RequestMapping("/receipt/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{

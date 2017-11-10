@@ -22,6 +22,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 出库
+ */
 
 @Controller
 public class OutStoreController {
@@ -39,12 +42,23 @@ public class OutStoreController {
 	private ProductStoreLinkDAO pslDao;
 	@Resource
 	private StoreDAO storeDao;
+
+	/**
+	 * 出库首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/outstore/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/outstore/list");
 		return "jsp/main";
 	}
-	
+
+	/**
+	 * 出库搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/outstore/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -75,6 +89,12 @@ public class OutStoreController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 出库删除
+	 * @param request
+	 * @param response
+	 */
 	@Transactional
 	@RequestMapping("/outstore/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
@@ -101,12 +121,25 @@ public class OutStoreController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 出库新增页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/outstore/edit")
 	public String edit(HttpServletRequest request){
 		request.setAttribute("stores", storeDao.findAll(null));
 		request.setAttribute("page","/Sreticeference/outstore/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 查看订单号
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/outstore/orderitems/select")
 	public void itemsSelect(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String orderno=request.getParameter("orderno");
@@ -124,6 +157,12 @@ public class OutStoreController {
 			WebUtils.outputWebPage(ja, response);
 		}
 	}
+
+	/**
+	 * 出库查看详情
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/outstore/descr")
 	public String descr(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -137,6 +176,13 @@ public class OutStoreController {
 		request.setAttribute("page","/Sreticeference/outstore/descr");
 		return "jsp/main";
 	}
+
+	/**
+	 * 新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@Transactional
 	@RequestMapping("/outstore/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -202,7 +248,13 @@ public class OutStoreController {
 		}
 		WebUtils.outputWebPage(result, response);
 	}
-	
+
+	/**
+	 * 取消出库
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/outstore/cancel")
 	public void cancel(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("ids");
@@ -223,6 +275,13 @@ public class OutStoreController {
 		}
 		WebUtils.outputWebPage(json, response);
 	}
+
+	/**
+	 * 出库审核通过/出库审核失败
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/outstore/review")
 	public void review(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("ids");
@@ -255,6 +314,13 @@ public class OutStoreController {
 		}
 		WebUtils.outputWebPage(json, response);
 	}
+
+	/**
+	 * 确认出库
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/outstore/outstoresuccess")
 	public void outstoresuccess(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("ids");

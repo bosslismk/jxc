@@ -18,17 +18,30 @@ import java.util.List;
 import java.util.Map;
 import com.inventory.util.WebPage;
 
+/**
+ * 商品分类
+ */
 @Controller
 public class ProductCategoryController {
 	@Resource
 	private ProductCategoryDAO categoryDao;
-	
+
+	/**
+	 * 商品分类首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/productcategory/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/productcategory/list");
 		return "jsp/main";
 	}
-	
+
+	/**
+	 * 商品分类搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/productcategory/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -59,7 +72,12 @@ public class ProductCategoryController {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 商品分类删除
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/productcategory/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -88,6 +106,12 @@ public class ProductCategoryController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 商品分类新增页面/商品分类编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/productcategory/edit")
 	public String edit(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -101,6 +125,13 @@ public class ProductCategoryController {
 		request.setAttribute("page","/Sreticeference/productcategory/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 商品分类新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/productcategory/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String name=request.getParameter("name");

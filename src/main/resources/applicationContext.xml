@@ -17,8 +17,22 @@
    ">
 	<context:annotation-config/>
 	<bean class="com.inventory.util.ConvertPwdPropertyConfigurer"
-		  p:location="classpath:config/jdbc.properties"
-	/>
+		  p:location="WEB-INF/config/redis.properties"/>
+	<bean class="com.inventory.util.ConvertPwdPropertyConfigurer"
+		  p:location="WEB-INF/config/jdbc.properties"/>
+
+	<!-- redis数据源 -->
+	<bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+		<property name="maxIdle" value="${redis.maxIdle}" />
+		<property name="maxTotal" value="${redis.maxActive}" />
+		<property name="maxWaitMillis" value="${redis.maxWait}" />
+		<property name="testOnBorrow" value="${redis.testOnBorrow}" />
+	</bean>
+	<!-- Spring-redis连接池管理工厂 -->
+	<bean id="jedisConnectionFactory"
+		  class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"
+		  p:host-name="${redis.host}" p:port="${redis.port}" p:password="${redis.pass}"
+		  p:pool-config-ref="poolConfig" />
 	<!-- 数据源 -->
 	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">

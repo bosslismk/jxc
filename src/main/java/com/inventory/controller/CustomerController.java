@@ -19,17 +19,30 @@ import java.util.List;
 import java.util.Map;
 import com.inventory.util.WebPage;
 
+/**
+ * 客户
+ */
 @Controller
 public class CustomerController {
 	@Resource
 	private CustomerDAO customerDao;
-	
+
+	/**
+	 * 客户显示页面
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/customer/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/customer/list");
 		return "jsp/main";
 	}
-	
+
+	/**
+	 * 客户搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/customer/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -60,7 +73,12 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 客户删除
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/customer/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -90,6 +108,12 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 客户新增页面/客户编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/customer/edit")
 	public String edit(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -103,6 +127,13 @@ public class CustomerController {
 		request.setAttribute("page","/Sreticeference/customer/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 客户新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/customer/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String name=request.getParameter("name");
@@ -147,7 +178,12 @@ public class CustomerController {
 		}
 		WebUtils.outputWebPage(result, response);
 	}
-	
+
+	/**
+	 * 客户开始使用/客户暂停使用
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/customer/updateStatus")
 	public void updateStatus(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -178,7 +214,12 @@ public class CustomerController {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 搜索名称
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/customer/select")
 	public void select(HttpServletRequest request,HttpServletResponse response){
 		String keyword=request.getParameter("keyword");

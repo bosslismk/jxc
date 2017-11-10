@@ -31,7 +31,7 @@
 			<button type="button" id="deleteButton" class="btn btn-danger">取消订单</button>
 			
 			<button type="button" id="descrButton" class="btn btn-info">查看订单</button>
-			<button type="button" id="reviewSuccessButton" class="btn btn-success">审核通过</button>
+			<button type="button" id="reviewSuccessButtonreviewSuccessButton" class="btn btn-success">审核通过</button>
 			<button type="button" id="reviewFailButton" class="btn btn-danger">审核失败</button>
               <table id="data-table" class="table table-bordered table-hover">
                 <thead>

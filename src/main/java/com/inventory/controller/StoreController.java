@@ -20,6 +20,9 @@ import java.util.Map;
 
 import com.inventory.util.WebPage;
 
+/**
+ * 仓库
+ */
 @Controller
 public class StoreController {
 	@Resource
@@ -28,13 +31,22 @@ public class StoreController {
 	private EmployeeDAO empDao;
 
 
-	
+	/**
+	 * 仓库首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/store/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/store/list");
 		return "jsp/main";
 	}
-	
+
+	/**
+	 * 仓库搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/store/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -65,7 +77,12 @@ public class StoreController {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 仓库删除
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/store/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -94,6 +111,12 @@ public class StoreController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 仓库新增页面/仓库编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/store/edit")
 	public String edit(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -107,6 +130,13 @@ public class StoreController {
 		request.setAttribute("page","/Sreticeference/store/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 仓库新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/store/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String name=request.getParameter("name");

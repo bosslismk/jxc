@@ -24,6 +24,9 @@ import java.util.Map;
 
 import com.inventory.util.WebPage;
 
+/**
+ * 商品
+ */
 @Controller
 public class ProductController {
 	@Resource
@@ -32,13 +35,23 @@ public class ProductController {
 	private ProductCategoryDAO categoryDao;
 	@Resource
 	private ProductStoreLinkDAO productStoreLinkDao;
-	
+
+	/**
+	 * 商品信息首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/product/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/product/list");
 		return "jsp/main";
 	}
-	
+
+	/**
+	 * 商品信息搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/product/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -69,7 +82,12 @@ public class ProductController {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * 商品信息删除
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/product/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -98,6 +116,12 @@ public class ProductController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 商品信息新增页面/商品信息修改页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/product/edit")
 	public String edit(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -112,6 +136,13 @@ public class ProductController {
 		request.setAttribute("page","/Sreticeference/product/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 商品信息新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/product/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String name=request.getParameter("name");
@@ -150,7 +181,12 @@ public class ProductController {
 		}
 		WebUtils.outputWebPage(result, response);
 	}
-	
+
+	/**
+	 * 查询商品库存
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/product/store")
 	public String store(HttpServletRequest request){
 		String id=request.getParameter("id");

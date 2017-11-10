@@ -20,18 +20,32 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 员工
+ */
 @Controller
 public class EmployeeController {
 	@Resource
 	private EmployeeDAO employeeDao;
 	@Resource
 	protected DepartmentDAO departmentDao;
-	
+
+	/**
+	 * 员工显示首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/employee/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/employee/list");
 		return "jsp/main";
 	}
+
+	/**
+	 * 员工搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/employee/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -63,6 +77,12 @@ public class EmployeeController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 员工删除
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/employee/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -87,6 +107,12 @@ public class EmployeeController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 员工新增页面/员工编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/employee/edit")
 	public String edit(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -101,6 +127,13 @@ public class EmployeeController {
 		request.setAttribute("page","/Sreticeference/employee/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 员工新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/employee/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("id");
@@ -142,6 +175,12 @@ public class EmployeeController {
 		}
 		WebUtils.outputWebPage(result, response);
 	}
+
+	/**
+	 * 生成工号
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/employee/generateEmpNo")
 	public void generateEmpNo(HttpServletResponse response) throws IOException{
 		String empNo="生成失败,稍后再试";

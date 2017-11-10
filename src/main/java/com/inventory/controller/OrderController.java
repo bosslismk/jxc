@@ -24,6 +24,9 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 import com.inventory.util.WebPage;
 
+/**
+ * 订单
+ */
 @Controller
 public class OrderController {
 	@Resource
@@ -34,13 +37,23 @@ public class OrderController {
 	private EmployeeDAO empDao;
 	@Resource
 	private ProductDAO productDao;
-	
+
+	/**
+	 * 订单首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/order/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/order/list");
 		return "jsp/main";
 	}
-	
+
+	/**
+	 * 订单搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/order/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -71,6 +84,12 @@ public class OrderController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 订单删除
+	 * @param request
+	 * @param response
+	 */
 	@Transactional
 	@RequestMapping("/order/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
@@ -97,11 +116,23 @@ public class OrderController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 添加订单
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/order/edit")
 	public String edit(HttpServletRequest request){
 		request.setAttribute("page","/Sreticeference/order/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 查看销售订单详情
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/order/descr")
 	public String descr(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -115,6 +146,13 @@ public class OrderController {
 		request.setAttribute("page","/Sreticeference/order/descr");
 		return "jsp/main";
 	}
+
+	/**
+	 * 新增订单
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@Transactional
 	@RequestMapping("/order/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
@@ -200,7 +238,13 @@ public class OrderController {
 		}
 		WebUtils.outputWebPage(result, response);
 	}
-	
+
+	/**
+	 * 取消订单
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/order/cancel")
 	public void cancel(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("ids");
@@ -221,6 +265,13 @@ public class OrderController {
 		}
 		WebUtils.outputWebPage(json, response);
 	}
+
+	/**
+	 * 审核通过/审核失败
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/order/review")
 	public void review(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String id=request.getParameter("ids");

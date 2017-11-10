@@ -19,18 +19,32 @@ import java.util.List;
 import java.util.Map;
 import com.inventory.util.WebPage;
 
+/**
+ * 部门
+ */
 @Controller
 public class DepartmentController {
 	@Resource
 	private DepartmentDAO departmentDao;
 	@Resource
 	private EmployeeDAO empDao;
-	
+
+	/**
+	 * 部门显示首页
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/department/listPage")
 	public String listPage(Model model){
 		model.addAttribute("page","/Sreticeference/department/list");
 		return "jsp/main";
 	}
+
+	/**
+	 * 部门搜索
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/department/list")
 	public void list(HttpServletRequest request,HttpServletResponse response){
 		String page=request.getParameter("page");
@@ -62,6 +76,12 @@ public class DepartmentController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 部门删除
+	 * @param request
+	 * @param response
+	 */
 	@RequestMapping("/department/delete")
 	public void delete(HttpServletRequest request,HttpServletResponse response){
 		String idsStr=request.getParameter("ids");
@@ -90,6 +110,12 @@ public class DepartmentController {
 			e.printStackTrace();
 		}
 	}
+
+	/**
+	 * 部门新增页面/部门编辑页面
+	 * @param request
+	 * @return
+	 */
 	@RequestMapping("/department/edit")
 	public String edit(HttpServletRequest request){
 		String id=request.getParameter("id");
@@ -103,6 +129,13 @@ public class DepartmentController {
 		request.setAttribute("page","/Sreticeference/department/edit");
 		return "jsp/main";
 	}
+
+	/**
+	 * 部门新增
+	 * @param request
+	 * @param response
+	 * @throws IOException
+	 */
 	@RequestMapping("/department/save")
 	public void save(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		String name=request.getParameter("name");
